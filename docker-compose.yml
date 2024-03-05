@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  api:
+    build:
+      context: Api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:80
+
+  client:
+    build:
+      context: Client
+    environment:
+      - API_URL=http://api
+    depends_on:
+      - api
